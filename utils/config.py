@@ -13,6 +13,8 @@ class Config:
 
     def __init__(self):
         self.parser = argparse.ArgumentParser()
+        self.brain_name = None
+        self.skip = False
         self.task_fn = None
         self.optimizer_fn = None
         self.actor_optimizer_fn = None
