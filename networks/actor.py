@@ -21,7 +21,7 @@ class FCBody(nn.Module):
         self.fc1 = nn.Linear(state_dim, 64)
         self.bn1 = nn.BatchNorm1d(64)
         self.fc2 = nn.Linear(64, 88)
-        self.reset_parameters()
+        #self.reset_parameters()
 
     def reset_parameters(self):
         self.fc1.weight.data.uniform_(*hidden_init(self.fc1))

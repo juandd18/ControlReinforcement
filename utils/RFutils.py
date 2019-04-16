@@ -87,12 +87,11 @@ def collect_episodes(model, env, brain_name, states_ini, limit_iter, config):
         states_ini = next_states
         iter += 1
         
-        if iter >= limit_iter:
-            break
+        #if iter >= limit_iter:
+        #    break
 
         if dones.any() == True:
-            env_info = env.reset(train_mode=True)[brain_name]
-            states_ini = env_info.vector_observations
+            break
         
     return storage,np.sum(accu_rewards),states_ini,dones
 
