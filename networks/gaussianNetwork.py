@@ -14,8 +14,8 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 class GaussianActorCriticNet(nn.Module):
     def __init__(self,
-                 state_dim,
-                 action_dim,
+                 state_dim = None,
+                 action_dim = None,
                  phi_body=None,
                  actor_body=None,
                  critic_body=None):
