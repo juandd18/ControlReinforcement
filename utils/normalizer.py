@@ -25,7 +25,7 @@ class BaseNormalizer:
 
 
 class MeanStdNormalizer(BaseNormalizer):
-    def __init__(self, read_only=False, clip=10.0, epsilon=1e-8):
+    def __init__(self, read_only=True, clip=10.0, epsilon=1e-8):
         BaseNormalizer.__init__(self, read_only)
         self.read_only = read_only
         self.rms = None
@@ -38,8 +38,9 @@ class MeanStdNormalizer(BaseNormalizer):
             self.rms = RunningMeanStd(shape=(1,) + x.shape[1:])
         if not self.read_only:
             self.rms.update(x)
-        return np.clip((x - self.rms.mean) / np.sqrt(self.rms.var + self.epsilon),
+        output = np.clip((x - self.rms.mean) / np.sqrt(self.rms.var + self.epsilon),
                        -self.clip, self.clip)
+        return output
 
 
 class RescaleNormalizer(BaseNormalizer):

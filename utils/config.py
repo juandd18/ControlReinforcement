@@ -3,9 +3,9 @@
 # Permission given to modify the code as long as you keep this        #
 # declaration at the top                                              #
 #######################################################################
-from .normalizer import *
 import argparse
 import torch
+
 
 
 class Config:
@@ -13,8 +13,6 @@ class Config:
 
     def __init__(self):
         self.parser = argparse.ArgumentParser()
-        self.brain_name = None
-        self.skip = False
         self.task_fn = None
         self.optimizer_fn = None
         self.actor_optimizer_fn = None
@@ -37,8 +35,6 @@ class Config:
         self.use_gae = False
         self.gae_tau = 1.0
         self.target_network_mix = 0.001
-        self.state_normalizer = RescaleNormalizer()
-        self.reward_normalizer = RescaleNormalizer()
         self.min_memory_size = None
         self.max_steps = 0
         self.rollout_length = None
@@ -59,6 +55,8 @@ class Config:
         self.eval_interval = 0
         self.eval_episodes = 10
         self.async_actor = True
+
+        self.device = None
 
     @property
     def eval_env(self):
