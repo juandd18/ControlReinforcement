@@ -22,24 +22,6 @@ def tensor(x):
     return x
 
 def collect_episodes(model, env, brain_name, states_ini, limit_iter, config):
-    '''
-    Params
-    ======
-        model (object): A2C model
-        env (object): environment
-        brain_name (string): brain name of environment
-        init_states (n_process, state_size) (numpy): initial states for loop
-        done (bool): tracker of episode end, default False
-        n_steps (int): number of steps for reward collection
-    Returns
-    =======
-        batch_s (T, n_process, state_size) (numpy): batch of states
-        batch_a (T, n_process, action_size) (numpy): batch of actions
-        batch_v_t (T, n_process) (numpy): batch of n-step rewards (aks target value)
-        accu_rewards (n_process,) (numpy): accumulated rewards for process (being summed up on all process)
-        init_states (n_process, state_size) (numpy): initial states for next batch
-        done (bool): tracker of episode end
-    '''
     storage = Storage(config.rollout_length)
     states = states_ini
     accu_rewards = np.zeros(states_ini.shape[0])

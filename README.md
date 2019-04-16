@@ -31,3 +31,5 @@ For this project, we will provide you with two separate versions of the Unity en
     ### Instructions
 
 Follow the instructions in `Control.ipynb` to get started with training your own agent!  
+(This code was based on the job made in https://github.com/ShangtongZhang/DeepRL)
+
